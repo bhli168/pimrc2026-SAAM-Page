@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IEEE PIMRC 2026 Workshop CFP | SAAM</title>
+  <style>
+    :root {
+      --blue: #0f6fa9;
+      --blue-dark: #0a4d75;
+      --ink: #18222d;
+      --muted: #4e5f6e;
+      --line: #24485d;
+      --soft-line: #d6dfe6;
+      --accent: #d42525;
+      --paper: #ffffff;
+      --shadow: rgba(10, 29, 45, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #e9eef3;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(78, 135, 191, 0.1), transparent 28%),
+        linear-gradient(180deg, #eff4f8 0%, #e7edf2 100%);
+    }
+
+    a {
+      color: #5d8ea1;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .poster {
+      width: min(1188px, calc(100vw - 24px));
+      margin: 22px auto;
+      background: var(--paper);
+      border: 1px solid #c8d2db;
+      box-shadow: 0 16px 34px var(--shadow);
+      overflow: hidden;
+    }
+
+    .conference-banner {
+      position: relative;
+      padding: 26px 28px 22px;
+      text-align: center;
+      color: #fff;
+      background:
+        linear-gradient(rgba(11, 31, 48, 0.24), rgba(11, 31, 48, 0.4)),
+        url("assets/singapore.jpg") center center / cover no-repeat;
+    }
+
+    .conference-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(79, 92, 175, 0.18), rgba(15, 111, 169, 0.08));
+      pointer-events: none;
+    }
+
+    .conference-banner > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .conference-title {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.14;
+      font-weight: 800;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.24);
+    }
+
+    .conference-meta {
+      margin-top: 8px;
+      font-size: 19px;
+      line-height: 1.16;
+      font-weight: 800;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    .workshop-bar {
+      background: var(--blue);
+      color: #fff;
+      text-align: center;
+      padding: 18px 36px;
+    }
+
+    .workshop-bar h2 {
+      margin: 0;
+      font-size: 29px;
+      line-height: 1.22;
+      font-weight: 800;
+    }
+
+    .body-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.92fr);
+      grid-template-areas:
+        "overview info"
+        "topics committees";
+      gap: 14px 16px;
+      padding: 16px 18px 18px;
+      align-items: start;
+    }
+
+    .overview {
+      grid-area: overview;
+      padding: 4px 8px 0 4px;
+    }
+
+    .overview p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.32;
+      letter-spacing: 0.02em;
+      text-align: justify;
+    }
+
+    .overview p + p {
+      margin-top: 10px;
+    }
+
+    .overview strong {
+      font-weight: 800;
+    }
+
+    .box {
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 12px 14px 13px;
+      min-width: 0;
+    }
+
+    .box h3 {
+      margin: 0 0 9px;
+      font-size: 18px;
+      line-height: 1.14;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .info-box {
+      grid-area: info;
+    }
+
+    .date-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .date-row {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.28;
+    }
+
+    .date-row strong {
+      font-weight: 800;
+    }
+
+    .date-row span {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .section-divider {
+      margin: 12px 0 10px;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    .submission-label {
+      display: block;
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .submission-link {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 800;
+      word-break: break-word;
+    }
+
+    .guidelines {
+      margin-top: 10px;
+      font-size: 14.5px;
+      line-height: 1.32;
+      text-align: justify;
+    }
+
+    .guidelines strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 15px;
+    }
+
+    .topics-box {
+      grid-area: topics;
+    }
+
+    .topics-list {
+      margin: 0;
+      padding-left: 21px;
+      font-size: 14.7px;
+      line-height: 1.2;
+    }
+
+    .topics-list li {
+      margin: 0 0 6px;
+    }
+
+    .committees-box {
+      grid-area: committees;
+    }
+
+    .name-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .name-entry {
+      font-size: 14.5px;
+      line-height: 1.24;
+    }
+
+    .name-entry strong {
+      display: block;
+      font-size: 15.5px;
+      line-height: 1.16;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .name-entry span {
+      display: block;
+      color: var(--ink);
+    }
+
+    .committee-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .subsection {
+      min-width: 0;
+    }
+
+    .subsection h4 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      line-height: 1.18;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .compact-list {
+      display: grid;
+      gap: 6px;
+    }
+
+    .compact-entry {
+      font-size: 14px;
+      line-height: 1.24;
+    }
+
+    .compact-entry strong {
+      font-weight: 800;
+    }
+
+    .compact-entry.tba {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .contact-note {
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px solid var(--soft-line);
+      font-size: 13.5px;
+      line-height: 1.3;
+    }
+
+    .footer-note {
+      padding: 0 18px 16px;
+      font-size: 12px;
+      color: #60707e;
+    }
+
+    @media (max-width: 980px) {
+      .conference-title {
+        font-size: 27px;
+      }
+
+      .conference-meta {
+        font-size: 17px;
+      }
+
+      .workshop-bar h2 {
+        font-size: 24px;
+      }
+
+      .body-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "overview"
+          "info"
+          "topics"
+          "committees";
+      }
+    }
+
+    @media (max-width: 640px) {
+      .committee-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .conference-banner {
+        padding: 22px 20px 18px;
+      }
+
+      .workshop-bar {
+        padding: 16px 20px;
+      }
+
+      .body-grid {
+        padding: 14px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+
+      html,
+      body {
+        background: #fff;
+      }
+
+      .poster {
+        width: auto;
+        margin: 0;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .box,
+      .name-entry,
+      .compact-entry {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="poster">
+    <header class="conference-banner">
+      <h1 class="conference-title">IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (IEEE PIMRC 2026)</h1>
+      <div class="conference-meta">1-4 September 2026 // Singapore</div>
+    </header>
+
+    <section class="workshop-bar" aria-label="Workshop title">
+      <h2>Workshop on Intelligent Communication and Networking for Space-Air Aided Maritime Systems</h2>
+    </section>
+
+    <main class="body-grid">
+      <section class="overview">
+        <p>
+          The workshop "<strong>Intelligent Communication and Networking for Space-Air Aided Maritime Systems</strong>"
+          focuses on communication and networking technologies for maritime-centric space-air-sea architectures, where
+          satellites, high-altitude platforms, and UAV systems act as enabling layers to enhance maritime connectivity,
+          sensing, resilience, and coordinated operations. Unlike generic integrated networks, this workshop emphasizes
+          the maritime domain as the operational core, with space and aerial segments providing cross-domain support
+          under sparse infrastructure, sea-surface propagation effects, and high-mobility dynamics.
+        </p>
+        <p>
+          Future maritime wireless infrastructures are rapidly evolving toward ocean-centric space-air-sea systems in
+          which LEO satellites, high-altitude platforms, and UAV relays extend coverage, improve environmental awareness,
+          and support offshore monitoring, maritime transportation, ocean observation, emergency response, and autonomous
+          operations in regions with sparse terrestrial infrastructure and dynamic sea conditions.
+        </p>
+        <p>
+          At the same time, such systems face coupled challenges including sea-surface propagation effects, satellite
+          Doppler dynamics, high-mobility relaying, cross-domain resource coupling, and mission-critical reliability
+          requirements. We invite original contributions on theoretical foundations, algorithmic innovations, and
+          system-level design for Space-Air Aided Maritime (SAAM) systems under realistic propagation, mobility,
+          and hardware constraints.
+        </p>
+      </section>
+
+      <aside class="box info-box">
+        <h3>Important Dates:</h3>
+        <div class="date-list">
+          <p class="date-row"><strong>Paper Submission Due:</strong> <span>June 5, 2026</span></p>
+          <p class="date-row"><strong>Acceptance Notification:</strong> <span>July 8, 2026</span></p>
+          <p class="date-row"><strong>Camera Ready:</strong> <span>August 1, 2026</span></p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3>Paper Submission:</h3>
+        <span class="submission-label">Submission link:</span>
+        <a class="submission-link" href="https://edas.info/newPaper.php?c=35202" target="_blank" rel="noreferrer">https://pimrc2026.ieee-pimrc.org/</a>
+
+        <div class="guidelines">
+          <strong>Guidelines:</strong>
+          Full papers should follow the IEEE PIMRC 2026 submission instructions. All submissions must be written in English
+          with a maximum paper length of six (6) printed pages (10-point font), including figures. One additional printed
+          page is permitted at extra charge. Accepted and presented papers will be submitted for inclusion in IEEE Xplore,
+          subject to IEEE policies.
+        </div>
+      </aside>
+
+      <section class="box topics-box">
+        <h3>Topics of Interest:</h3>
+        <ul class="topics-list">
+          <li>High-resolution and low-latency ISAC for satellite-UAV-maritime systems</li>
+          <li>Intelligent networking and self-organizing architectures in multi-layer space-air-sea networks</li>
+          <li>Cross-domain resource allocation and spectrum sharing across heterogeneous layers</li>
+          <li>UAV-assisted maritime networking and cooperative communication</li>
+          <li>Satellite-terrestrial-maritime integration and interoperability</li>
+          <li>Distributed AI and learning-enabled wireless optimization</li>
+          <li>Mobility-aware waveform design and beam management under LEO Doppler and aerial dynamics</li>
+          <li>Resilient communication under high Doppler and dynamic topology</li>
+          <li>Secure and privacy-preserving communication in cross-domain infrastructures</li>
+          <li>Multi-agent coordination and intelligent decision-making in cross-domain networks</li>
+          <li>Cross-domain space-air-surface-underwater network architecture and protocol design</li>
+          <li>Integrated above-water and underwater communications for ocean observation systems</li>
+          <li>Underwater acoustic, optical, and hybrid networking with aerial or satellite assistance</li>
+          <li>AUV, UUV, and USV assisted data collection, relaying, and cooperative maritime networking</li>
+          <li>Air-sea-underwater integrated sensing, localization, tracking, and target monitoring</li>
+          <li>Sea-state-aware channel modeling for satellite, aerial, surface, and underwater links</li>
+          <li>Maritime emergency communications, search-and-rescue networking, and resilient offshore systems</li>
+        </ul>
+      </section>
+
+      <aside class="box committees-box">
+        <h3>Workshop Organizers:</h3>
+        <div class="name-list">
+          <div class="name-entry">
+            <strong>Shahid Mumtaz</strong>
+            <span>Nottingham Trent University, UK</span>
+          </div>
+          <div class="name-entry">
+            <strong>Pei Xiao</strong>
+            <span>University of Surrey, UK</span>
+          </div>
+          <div class="name-entry">
+            <strong>Bohan Li</strong>
+            <span>Ocean University of China, China</span>
+          </div>
+          <div class="name-entry">
+            <strong>Haochen Liu</strong>
+            <span>Northwestern Polytechnical University, China</span>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="committee-columns">
+          <section class="subsection">
+            <h4>Steering Committee:</h4>
+            <div class="compact-list">
+              <div class="compact-entry tba"><strong>TBA</strong> Steering committee member slot</div>
+              <div class="compact-entry tba"><strong>TBA</strong> Steering committee member slot</div>
+              <div class="compact-entry tba"><strong>TBA</strong> Steering committee member slot</div>
+              <div class="compact-entry tba"><strong>TBA</strong> Steering committee member slot</div>
+            </div>
+          </section>
+
+          <section class="subsection">
+            <h4>Technical Program Committee:</h4>
+            <div class="compact-list">
+              <div class="compact-entry"><strong>Qu Luo</strong>, University of Surrey</div>
+              <div class="compact-entry"><strong>Yaoyuan Zhang</strong>, Harbin Institute of Technology</div>
+              <div class="compact-entry tba"><strong>TBA</strong> TPC member slot</div>
+              <div class="compact-entry tba"><strong>TBA</strong> TPC member slot</div>
+              <div class="compact-entry tba"><strong>TBA</strong> TPC member slot</div>
+            </div>
+          </section>
+        </div>
+
+        <div class="contact-note">
+          <strong>Contact:</strong> Bohan Li, bohan.li@ouc.edu.cn
+        </div>
+      </aside>
+    </main>
+
+    <div class="footer-note">
+      Submission entry displayed as https://pimrc2026.ieee-pimrc.org/ and routed to the official EDAS workshop track.
+    </div>
+  </article>
+</body>
+</html>

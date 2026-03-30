@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IEEE PIMRC 2026 Workshop | Space-Air Aided Maritime Systems</title>
+  <style>
+    :root {
+      --navy: #102f4a;
+      --navy-deep: #0a2238;
+      --marine: #0b6a96;
+      --seafoam: #eef7fb;
+      --sand: #d49b42;
+      --ink: #1a2530;
+      --muted: #5b6b79;
+      --line: rgba(15, 44, 69, 0.12);
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --shadow: 0 20px 44px rgba(15, 39, 61, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(11, 106, 150, 0.1), transparent 28%),
+        radial-gradient(circle at top right, rgba(212, 155, 66, 0.14), transparent 26%),
+        linear-gradient(180deg, #f7fbfd 0%, #edf4f7 40%, #f8fafb 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(247, 251, 253, 0.82);
+      border-bottom: 1px solid rgba(16, 47, 74, 0.08);
+    }
+
+    .site-nav .shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 68px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--marine);
+      font-weight: 800;
+    }
+
+    .brand-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      line-height: 1.05;
+      font-weight: 700;
+      color: var(--navy-deep);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--muted);
+      transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(11, 106, 150, 0.08);
+      color: var(--navy);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      padding: 42px 0 34px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 26px 0 0;
+      border-radius: 34px;
+      background:
+        linear-gradient(rgba(9, 28, 44, 0.54), rgba(9, 28, 44, 0.48)),
+        url("assets/singapore.jpg") center center / cover no-repeat;
+      box-shadow: var(--shadow);
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 26px 0 0;
+      border-radius: 34px;
+      background:
+        linear-gradient(120deg, rgba(8, 70, 105, 0.32), rgba(212, 155, 66, 0.14)),
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.14), transparent 24%);
+      z-index: -1;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.8fr);
+      gap: 22px;
+      padding: 70px 42px 56px;
+      color: #fff;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy h1 {
+      margin: 18px 0 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 720px;
+      font-size: 18px;
+      line-height: 1.62;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 15px;
+      font-weight: 800;
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .button.primary {
+      background: #fff;
+      color: var(--navy);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.28);
+      color: #fff;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-panel {
+      align-self: end;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-panel-title {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .hero-panel-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .hero-panel-item {
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .hero-panel-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .hero-panel-label {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.68);
+      font-weight: 700;
+    }
+
+    .hero-panel-value {
+      display: block;
+      margin-top: 5px;
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    main {
+      padding-bottom: 54px;
+    }
+
+    section {
+      padding: 30px 0 0;
+    }
+
+    .section-intro {
+      margin-bottom: 20px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--marine);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.05;
+      color: var(--navy-deep);
+    }
+
+    .section-copy {
+      margin: 10px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .card p + p {
+      margin-top: 12px;
+    }
+
+    .topics-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .topic-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .topic-list li {
+      min-height: 100%;
+      padding: 18px 18px 18px 20px;
+      border-radius: 20px;
+      background: var(--surface-strong);
+      border: 1px solid rgba(16, 47, 74, 0.09);
+      box-shadow: 0 12px 24px rgba(15, 39, 61, 0.06);
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink);
+      position: relative;
+    }
+
+    .topic-list li::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 0;
+      width: 4px;
+      height: calc(100% - 36px);
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--marine), rgba(11, 106, 150, 0.18));
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 18px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      margin-top: 5px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, var(--marine), var(--navy));
+      box-shadow: 0 0 0 5px rgba(11, 106, 150, 0.12);
+    }
+
+    .timeline-item h4 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    .timeline-item p {
+      margin: 4px 0 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .date-chip {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(212, 155, 66, 0.16);
+      color: #8a5a14;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .submission-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.86fr);
+      gap: 20px;
+    }
+
+    .rules {
+      margin: 16px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .rules li {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .note-box {
+      display: grid;
+      gap: 14px;
+      padding: 22px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(16, 47, 74, 0.96), rgba(11, 106, 150, 0.9));
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .note-box h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .note-box p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    .note-box a {
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+    }
+
+    .schedule-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 16px;
+      padding: 15px 18px;
+      border-radius: 18px;
+      background: var(--surface-strong);
+      border: 1px solid rgba(16, 47, 74, 0.08);
+      box-shadow: 0 10px 22px rgba(15, 39, 61, 0.06);
+    }
+
+    .schedule-time {
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .schedule-title {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .organizer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .organizer-card {
+      padding: 22px;
+      border-radius: 22px;
+      background: var(--surface-strong);
+      border: 1px solid rgba(16, 47, 74, 0.09);
+      box-shadow: 0 12px 24px rgba(15, 39, 61, 0.06);
+    }
+
+    .organizer-card h3 {
+      margin: 0 0 6px;
+      font-size: 21px;
+      color: var(--navy);
+    }
+
+    .organizer-role {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(11, 106, 150, 0.1);
+      color: var(--marine);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .organizer-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .organizer-card.placeholder {
+      border-style: dashed;
+      background: rgba(249, 252, 254, 0.98);
+    }
+
+    .organizer-card.placeholder h3 {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .organizer-card.placeholder p {
+      color: #7a8793;
+    }
+
+    .contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 24px;
+      border-radius: 24px;
+      background:
+        linear-gradient(90deg, rgba(243, 230, 203, 0.9), rgba(232, 244, 250, 0.95));
+      border: 1px solid rgba(212, 155, 66, 0.24);
+      box-shadow: 0 14px 28px rgba(15, 39, 61, 0.07);
+    }
+
+    .contact-strip strong {
+      color: var(--navy);
+    }
+
+    .footer {
+      padding: 34px 0 18px;
+      color: #697786;
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .site-nav .shell,
+      .hero-inner,
+      .grid-two,
+      .topics-shell,
+      .submission-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-nav .shell {
+        display: grid;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero::before,
+      .hero::after {
+        border-radius: 24px;
+      }
+
+      .hero-inner {
+        padding: 52px 24px 32px;
+      }
+
+      .organizer-grid,
+      .topic-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+
+      .hero::before,
+      .hero::after {
+        inset: 12px 0 0;
+      }
+
+      .hero-copy h1 {
+        font-size: 34px;
+      }
+
+      .hero-copy p,
+      .section-copy,
+      .card p {
+        font-size: 15px;
+      }
+
+      .schedule-item {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-strip {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="shell">
+      <div class="brand">
+        <span class="brand-kicker">IEEE PIMRC 2026 Workshop</span>
+        <span class="brand-title">Space-Air Aided Maritime Systems</span>
+      </div>
+      <nav class="nav-links" aria-label="Page navigation">
+        <a href="#about">About</a>
+        <a href="#themes">Themes</a>
+        <a href="#dates">Dates</a>
+        <a href="#submission">Submission</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#organizers">Organizers</a>
+        <a href="#steering">Steering</a>
+        <a href="#tpc">TPC</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="hero-kicker">Half-day Workshop at IEEE PIMRC 2026</span>
+          <h1 id="hero-title">Intelligent Communication and Networking for Space-Air Aided Maritime Systems</h1>
+          <p>
+            A maritime-first workshop on communication, networking, sensing, and AI for cross-domain
+            space-air-sea systems, with the maritime network positioned as the operational core.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="PIMRC2026_SAAM_CFP_poster.html">Open CFP Poster</a>
+            <a class="button secondary" href="https://edas.info/newPaper.php?c=35202" target="_blank" rel="noreferrer">Submit via EDAS</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="hero-panel-title">Workshop Snapshot</div>
+          <div class="hero-panel-grid">
+            <div class="hero-panel-item">
+              <span class="hero-panel-label">Conference</span>
+              <span class="hero-panel-value">IEEE International Symposium on Personal, Indoor and Mobile Radio Communications</span>
+            </div>
+            <div class="hero-panel-item">
+              <span class="hero-panel-label">When and Where</span>
+              <span class="hero-panel-value">1-4 September 2026, Singapore</span>
+            </div>
+            <div class="hero-panel-item">
+              <span class="hero-panel-label">Primary Contact</span>
+              <span class="hero-panel-value">Bohan Li<br />bohan.li@ouc.edu.cn</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <main class="shell">
+    <section id="about">
+      <div class="section-intro">
+        <span class="section-kicker">Workshop Focus</span>
+        <h2 class="section-title">Why this workshop matters now</h2>
+        <p class="section-copy">
+          Future maritime wireless systems are evolving toward space-air aided architectures where satellites,
+          high-altitude platforms, and UAV systems enhance maritime connectivity, sensing, resilience, and
+          coordinated operations. This workshop is designed around that maritime-centric view rather than a
+          generic all-domain integration narrative.
+        </p>
+      </div>
+
+      <div class="grid-two">
+        <article class="card">
+          <h3>Workshop overview</h3>
+          <p>
+            The workshop focuses on theoretical foundations, algorithmic innovations, and system-level design
+            for Space-Air Aided Maritime (SAAM) systems. We welcome both model-driven and data-driven methods
+            spanning integrated sensing and communication, intelligent networking, adaptive resource allocation,
+            distributed AI, and cross-layer optimization under realistic propagation and hardware constraints.
+          </p>
+          <p>
+            The scope emphasizes sparse maritime infrastructure, sea-surface propagation effects, high-mobility
+            aerial relaying, satellite Doppler dynamics, cross-domain resource coupling, and mission-critical
+            reliability requirements. The goal is to create a focused venue for researchers shaping the next
+            generation of maritime wireless infrastructures.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Differentiating angle</h3>
+          <p>
+            Many workshops treat space, air, ground, and sea as symmetric components of one integrated
+            architecture. This workshop instead centers on maritime-driven system design, examining how space
+            and aerial layers can intelligently assist maritime communications through cross-domain coordination
+            and practical deployment-aware optimization.
+          </p>
+        </article>
+      </div>
+
+    </section>
+
+    <section id="themes">
+      <div class="section-intro">
+        <span class="section-kicker">Call for Papers</span>
+        <h2 class="section-title">Topics of interest</h2>
+        <p class="section-copy">
+          We invite original contributions on communication and networking technologies for maritime-centric
+          space-air-sea architectures. Topics include, but are not limited to, the following themes.
+        </p>
+      </div>
+
+      <div class="topics-shell">
+        <ul class="topic-list">
+          <li>High-resolution and low-latency ISAC for cross-domain satellite-UAV-maritime systems</li>
+          <li>Intelligent networking and self-organizing architectures in multi-layer space-air-sea networks</li>
+          <li>Cross-domain resource allocation and spectrum sharing across heterogeneous layers</li>
+          <li>UAV-assisted networking and cooperative communication</li>
+          <li>Satellite-terrestrial-maritime network integration and interoperability</li>
+          <li>Distributed AI and learning-enabled wireless optimization</li>
+          <li>Mobility-aware waveform design and beam management under LEO Doppler and aerial dynamics</li>
+          <li>Edge intelligence and federated learning in multi-layer networks</li>
+          <li>Resilient communication under high Doppler and dynamic topology</li>
+          <li>Nonstationary spatiotemporal modeling and stochastic geometry for cross-domain networks</li>
+          <li>Secure and privacy-preserving communication in cross-domain infrastructures</li>
+          <li>Multi-agent coordination and intelligent decision-making in cross-domain networks</li>
+        </ul>
+
+        <aside class="card" id="dates">
+          <h3>Important dates</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div>
+                <h4>Paper submission due</h4>
+                <span class="date-chip">June 5, 2026</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div>
+                <h4>Acceptance notification</h4>
+                <span class="date-chip">July 8, 2026</span>
+                <p>Accepted papers should be prepared for final submission immediately after notification.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div>
+                <h4>Camera-ready due</h4>
+                <span class="date-chip">August 1, 2026</span>
+                <p>Final papers follow the IEEE PIMRC 2026 workshop instructions and IEEE policy requirements.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div>
+                <h4>Conference workshops</h4>
+                <span class="date-chip">September 1-4, 2026</span>
+                <p>The workshop will be held in Singapore as part of IEEE PIMRC 2026.</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="submission">
+      <div class="section-intro">
+        <span class="section-kicker">For Authors</span>
+        <h2 class="section-title">Submission information</h2>
+        <p class="section-copy">
+          Submissions should follow the IEEE PIMRC 2026 workshop rules. The direct EDAS workshop submission page
+          is available through the link below.
+        </p>
+      </div>
+
+      <div class="submission-grid">
+        <article class="card">
+          <h3>Paper guidelines</h3>
+          <p>
+            Authors are invited to submit full papers following the IEEE PIMRC 2026 workshop submission
+            instructions. All submissions must be written in English and should present original, unpublished work.
+          </p>
+          <ul class="rules">
+            <li>Maximum length: six printed pages in 10-point font, including figures.</li>
+            <li>One additional page is permitted at extra charge under IEEE PIMRC 2026 rules.</li>
+            <li>Each paper will undergo peer review through EDAS.</li>
+            <li>Accepted and presented papers will be submitted for inclusion in IEEE Xplore, subject to IEEE policies.</li>
+          </ul>
+        </article>
+
+        <aside class="note-box">
+          <h3>EDAS submission link</h3>
+          <p>
+            Authors can submit directly to the workshop through the official EDAS page for this workshop track.
+          </p>
+          <p>
+            Direct submission page:
+            <a href="https://edas.info/newPaper.php?c=35202" target="_blank" rel="noreferrer">https://pimrc2026.ieee-pimrc.org/</a>
+          </p>
+          <a class="button primary" href="https://edas.info/newPaper.php?c=35202" target="_blank" rel="noreferrer">Open EDAS Submission</a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="section-intro">
+        <span class="section-kicker">Tentative Format</span>
+        <h2 class="section-title">Half-day schedule</h2>
+        <p class="section-copy">
+          The proposal plans a focused half-day format that combines invited perspectives, technical sessions,
+          and discussion around cross-domain maritime communications.
+        </p>
+      </div>
+
+      <div class="schedule-list">
+        <div class="schedule-item">
+          <div class="schedule-time">08:30-08:40</div>
+          <div class="schedule-title">Opening remarks and workshop overview</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">08:40-09:20</div>
+          <div class="schedule-title">Keynote or invited talk</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">09:20-10:20</div>
+          <div class="schedule-title">Technical Session I with 3-4 papers</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">10:20-10:40</div>
+          <div class="schedule-title">Coffee break</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">10:40-11:40</div>
+          <div class="schedule-title">Technical Session II with 3-4 papers</div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-time">11:40-12:00</div>
+          <div class="schedule-title">Panel discussion and closing</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="organizers">
+      <div class="section-intro">
+        <span class="section-kicker">Organizing Team</span>
+        <h2 class="section-title">Workshop organizers</h2>
+        <p class="section-copy">
+          The workshop is organized by researchers working across wireless communications, non-terrestrial
+          networking, and maritime communication systems.
+        </p>
+      </div>
+
+      <div class="organizer-grid">
+        <article class="organizer-card">
+          <span class="organizer-role">Organizer</span>
+          <h3>Shahid Mumtaz</h3>
+          <p>Nottingham Trent University, UK</p>
+        </article>
+        <article class="organizer-card">
+          <span class="organizer-role">Organizer</span>
+          <h3>Pei Xiao</h3>
+          <p>University of Surrey, UK</p>
+        </article>
+        <article class="organizer-card">
+          <span class="organizer-role">Organizer</span>
+          <h3>Bohan Li</h3>
+          <p>Ocean University of China, China</p>
+        </article>
+        <article class="organizer-card">
+          <span class="organizer-role">Organizer</span>
+          <h3>Haochen Liu</h3>
+          <p>Northwestern Polytechnical University, China</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="steering">
+      <div class="section-intro">
+        <span class="section-kicker">Steering Committee</span>
+        <h2 class="section-title">Reserved committee positions</h2>
+        <p class="section-copy">
+          Four steering committee positions are being reserved on the website and CFP. Names will be added as the
+          committee is finalized.
+        </p>
+      </div>
+
+      <div class="organizer-grid">
+        <article class="organizer-card placeholder">
+          <span class="organizer-role">Steering Member</span>
+          <h3>To Be Announced</h3>
+          <p>Steering committee member slot</p>
+        </article>
+        <article class="organizer-card placeholder">
+          <span class="organizer-role">Steering Member</span>
+          <h3>To Be Announced</h3>
+          <p>Steering committee member slot</p>
+        </article>
+        <article class="organizer-card placeholder">
+          <span class="organizer-role">Steering Member</span>
+          <h3>To Be Announced</h3>
+          <p>Steering committee member slot</p>
+        </article>
+        <article class="organizer-card placeholder">
+          <span class="organizer-role">Steering Member</span>
+          <h3>To Be Announced</h3>
+          <p>Steering committee member slot</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="tpc">
+      <div class="section-intro">
+        <span class="section-kicker">Technical Program Committee</span>
+        <h2 class="section-title">Initial TPC members</h2>
+        <p class="section-copy">
+          Five TPC positions are being reserved at this stage. Two members are currently confirmed and the remaining
+          positions will be filled as the committee is finalized.
+        </p>
+      </div>
+
+      <div class="organizer-grid">
+        <article class="organizer-card">
+          <span class="organizer-role">TPC Member</span>
+          <h3>Qu Luo</h3>
+          <p>University of Surrey</p>
+        </article>
+        <article class="organizer-card">
+          <span class="organizer-role">TPC Member</span>
+          <h3>Yaoyuan Zhang</h3>
+          <p>Harbin Institute of Technology</p>
+        </article>
+        <article class="organizer-card placeholder">
+          <span class="organizer-role">TPC Member</span>
+          <h3>To Be Announced</h3>
+          <p>TPC member slot</p>
+        </article>
+        <article class="organizer-card placeholder">
+          <span class="organizer-role">TPC Member</span>
+          <h3>To Be Announced</h3>
+          <p>TPC member slot</p>
+        </article>
+        <article class="organizer-card placeholder">
+          <span class="organizer-role">TPC Member</span>
+          <h3>To Be Announced</h3>
+          <p>TPC member slot</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="contact-strip">
+        <div>
+          <strong>Primary contact:</strong> Bohan Li
+        </div>
+        <div>
+          <strong>Email:</strong> bohan.li@ouc.edu.cn
+        </div>
+        <div>
+          <strong>CFP poster:</strong> <a href="PIMRC2026_SAAM_CFP_poster.html">Open printable version</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      This single-page workshop site is ready for GitHub Pages deployment and now points to the direct EDAS workshop submission page.
+    </footer>
+  </main>
+</body>
+</html>
